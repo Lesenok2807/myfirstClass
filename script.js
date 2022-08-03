@@ -9,28 +9,59 @@ let servis2 = prompt("Какой дополнительный тип услуг 
 let servisPrice1 = +prompt("Сколько будет стоить?");
 let servisPrice2 = +prompt("Сколько будет стоить?");
 let rollback = 50;
+let allServicePrices; 
 let fullPrice = screenPrice + servisPrice1 + servisPrice2;
 let servicePresentPrice = Math.ceil(fullPrice - (fullPrice * (rollback/100)));
 
-console.log(title);
-console.log(screens);
-console.log(screenPrice);
-console.log(adaptive);
-console.log(servis1.toUpperCase() + " - " + servisPrice1 + ' рублей');
-console.log(servis2.toUpperCase() + " - " + servisPrice2 + ' рублей');
-console.log(fullPrice + ' рублей');
-console.log(servicePresentPrice + ' рублей');
 
-switch (true) {
-    case fullPrice > 30000:
-        console.log('Делаем скидку 10%');
-        break;
-    case 15000 < fullPrice && fullPrice < 30000:
-        console.log('Делаем скидку 5%');
-        break;
-    case 0 < fullPrice && fullPrice < 15000:
-        console.log('Скидка не предусмотрена');
-        break;
-    default:
-        console.log('Что-то пошло не так');
-}
+const showTypeOf = function(variable) {
+    console.log(variable, typeof variable);
+};
+
+const getAllServisePrices = function(servisPrice1, servisPrice2) {
+    return servisPrice1 + servisPrice2;
+};
+
+function getFullPrice(screenPrice, allServicePrices) {
+    return screenPrice + allServicePrices;
+
+};
+
+const getTitle = function(title) {
+    if (typeof title != 'string') return '';
+    return title.charAt(0).toUpperCase() + title.slice(1).toLowerCase();
+};
+
+const getServicePercentPrices = function() {
+
+    return servicePresentPrice;
+};
+
+const getRollbackMessage = function() {
+    switch (true) {
+        case fullPrice > 30000:
+            return'Делаем скидку 10%';
+        case 15000 < fullPrice && fullPrice < 30000:
+            return'Делаем скидку 5%';
+        case 0 < fullPrice && fullPrice < 15000:
+            return 'Скидка не предусмотрена';
+        default:
+            return 'Что-то пошло не так';
+    }
+    
+};
+
+
+allServicePrices = getAllServisePrices(servisPrice1, servisPrice2);
+fullPrice = getFullPrice(screenPrice, allServicePrices);
+getTitle(title);
+showTypeOf(screens);
+showTypeOf(rollback);
+showTypeOf(fullPrice);
+
+
+console.log(screens);
+console.log(getRollbackMessage());
+console.log(getServicePercentPrices() + ' рублей');
+
+
