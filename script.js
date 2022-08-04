@@ -5,8 +5,8 @@ let screens = prompt("Какие типы экранов нужно разраб
 let screenPrice = +prompt("Сколко будет стоить данная работа?", "12000");
 let adaptive = confirm("Нужен ли адаптив на сайте?");
 let servis1 = prompt("Какой дополнительный тип услуг нужен?");
-let servis2 = prompt("Какой дополнительный тип услуг нужен?");
 let servisPrice1 = +prompt("Сколько будет стоить?");
+let servis2 = prompt("Какой дополнительный тип услуг нужен?");
 let servisPrice2 = +prompt("Сколько будет стоить?");
 let rollback = 50;
 let allServicePrices; 
