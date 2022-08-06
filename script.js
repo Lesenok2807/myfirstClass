@@ -4,11 +4,10 @@ let title;
 let screens;
 let screenPrice;
 let adaptive;
-
 let rollback = 50;
 let allServicePrices;
-let fullPrice; // = screenPrice + servisPrice1 + servisPrice2;
-let servicePresentPrice; // = Math.ceil(fullPrice - (fullPrice * (rollback/100)));
+let fullPrice;
+let servicePresentPrice;
 let servis1;
 let servis2;
 
@@ -19,12 +18,11 @@ const isNumber = function(num) {
 const asking = function() {
     title = prompt("Как называется ваш проект?", "Калькулятор верстки");
     screens = prompt("Какие типы экранов нужно разработать?", " Простые, Сложные, Интерактивные");
-    screenPrice = prompt("Сколко будет стоить данная работа?");
 
-    while (!isNumber(screenPrice)) {
-
+    do {
         screenPrice = prompt("Сколко будет стоить данная работа?");
-    }
+    } while (!isNumber(screenPrice));
+
     adaptive = confirm("Нужен ли адаптив на сайте?");
 };
 
@@ -32,6 +30,7 @@ const getAllServisePrices = function() {
     let sum = 0;
 
     for (let i = 0; i < 2; i++){
+        let cost = 0;
 
         if (i === 0) {
             servis1 = prompt("Какой дополнительный тип услуг нужен?");
@@ -39,7 +38,11 @@ const getAllServisePrices = function() {
             servis2 = prompt("Какой дополнительный тип услуг нужен?");
         }
 
-        sum += +prompt("Сколько будет стоить?");
+        do {
+            cost = prompt("Сколько будет стоить?");
+        } while (!isNumber(cost));
+
+        sum += +cost;
     }
 
     return sum;
@@ -49,17 +52,17 @@ const showTypeOf = function(variable) {
     console.log(variable, typeof variable);
 };
 
-function getFullPrice() {
-    return screenPrice + allServicePrices;
+const getFullPrice = function() {
+    return +screenPrice + allServicePrices;
+};
+
+const getServicePercentPrices = function() {
+    return fullPrice - (fullPrice * (rollback / 100));
 };
 
 const getTitle = function(title) {
     if (typeof title != 'string') return '';
     return title.charAt(0).trim().toUpperCase() + title.trim().matchslice(1).toLowerCase();
-};
-
-const getServicePercentPrices = function() {
-    return Math.ceil(fullPrice - (fullPrice * (rollback/100)));
 };
 
 const getRollbackMessage = function() {
@@ -91,7 +94,7 @@ console.log('allServicePrices', allServicePrices);
 console.log(getRollbackMessage(fullPrice));
 console.log(typeof title);
 console.log(typeof screenPrice);
-console.log(typeof servicePresentPrice);
+console.log(typeof adaptive);
 
 console.log(screens.length);
 console.log(servicePresentPrice);
