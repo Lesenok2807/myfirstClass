@@ -62,7 +62,7 @@ const getServicePercentPrices = function() {
 
 const getTitle = function(title) {
     if (typeof title != 'string') return '';
-    return title.charAt(0).trim().toUpperCase() + title.trim().matchslice(1).toLowerCase();
+    return title.charAt(0).trim().toUpperCase() + title.trim().slice(1).toLowerCase();
 };
 
 const getRollbackMessage = function() {
@@ -99,6 +99,3 @@ console.log(typeof adaptive);
 console.log(screens.length);
 console.log(servicePresentPrice);
 console.log("Стоимость верстки экрана: " + screenPrice + " рублей и Стоимость разработки сайта " + fullPrice + " рублей");
-
-
-
