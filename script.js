@@ -28,8 +28,7 @@ function getFullPrice(screenPrice, allServicePrices) {
 };
 
 const getTitle = function(title) {
-    if (typeof title != 'string') return '';
-    return title.charAt(0).toUpperCase() + title.slice(1).toLowerCase();
+    return title.charAt(0).trim().toUpperCase() + title.trim().slice(1).toLowerCase();
 };
 
 const getServicePercentPrices = function() {
@@ -39,16 +38,15 @@ const getServicePercentPrices = function() {
 
 const getRollbackMessage = function() {
     switch (true) {
-        case fullPrice > 30000:
-            return'Делаем скидку 10%';
-        case 15000 < fullPrice && fullPrice < 30000:
-            return'Делаем скидку 5%';
-        case 0 < fullPrice && fullPrice < 15000:
+        case fullPrice >= 30000:
+            return 'Делаем скидку 10%';
+        case fullPrice >= 15000 && fullPrice < 30000:
+            return 'Делаем скидку 5%';
+        case fullPrice >= 0 && fullPrice < 15000:
             return 'Скидка не предусмотрена';
         default:
             return 'Что-то пошло не так';
-    }
-    
+    }    
 };
 
 
@@ -63,5 +61,4 @@ showTypeOf(fullPrice);
 console.log(screens);
 console.log(getRollbackMessage());
 console.log(getServicePercentPrices() + ' рублей');
-
-
+console.log("Стоимость верстки экрана: " + screenPrice + " рублей и Стоимость разработки сайта " + fullPrice + " рублей");
