@@ -28,7 +28,8 @@ function getFullPrice(screenPrice, allServicePrices) {
 };
 
 const getTitle = function(title) {
-    return title.charAt(0).trim().toUpperCase() + title.trim().slice(1).toLowerCase();
+    let newTitle = title.trim();
+    return newTitle[0].toUpperCase() + newTitle.slice(1).toLowerCase();
 };
 
 const getServicePercentPrices = function() {
@@ -59,6 +60,7 @@ showTypeOf(fullPrice);
 
 
 console.log(screens);
+console.log(getTitle(title));
 console.log(getRollbackMessage());
 console.log(getServicePercentPrices() + ' рублей');
 console.log("Стоимость верстки экрана: " + screenPrice + " рублей и Стоимость разработки сайта " + fullPrice + " рублей");
