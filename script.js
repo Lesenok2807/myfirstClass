@@ -61,8 +61,8 @@ const getServicePercentPrices = function() {
 };
 
 const getTitle = function(title) {
-    if (typeof title != 'string') return '';
-    return title.charAt(0).trim().toUpperCase() + title.trim().slice(1).toLowerCase();
+    let newTitle = title.trim();
+    return newTitle[0].toUpperCase() + newTitle.slice(1).toLowerCase();
 };
 
 const getRollbackMessage = function() {
@@ -90,7 +90,7 @@ showTypeOf(screenPrice);
 showTypeOf(adaptive);
 
 console.log('allServicePrices', allServicePrices);
-
+console.log(getTitle(title));
 console.log(getRollbackMessage(fullPrice));
 console.log(typeof title);
 console.log(typeof screenPrice);
