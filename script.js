@@ -21,13 +21,23 @@ const appData = {
       },           
     isNumber: function(num) {
         return !isNaN(parseFloat(num)) && isFinite(num);
-    },    
+    },
     asking: function() {
-        appData.title = prompt("Как называется ваш проект?", "Калькулятор верстки");
-      
+
+        appData.title = prompt("Как называется ваш проект?");
+        while (!isNaN(appData.title) || appData.title === "" || appData.title === null) {
+            appData.title = prompt("Как называется ваш проект?");
+        }
+                          
         for (let i = 0; i < 2; i++) {
+
             let name = prompt("Какие типы экранов нужно разработать?");
             let price = 0;
+            
+            while (!isNaN(name) || name.trim() === "" || name === null) {
+                name = prompt("Какие типы экранов нужно разработать?");
+            };
+                       
 
             do {
                 price = prompt("Сколко будет стоить данная работа?");
@@ -50,16 +60,23 @@ const appData = {
         }
 
         for (let i = 0; i < 2; i++) {
+            //let id = i;
             let name = prompt("Какой дополнительный тип услуг нужен?");
             let price = 0;
-        
+
+            while (!isNaN(name) || name.trim() === "" || name === null) {
+                name = prompt("Какой дополнительный тип услуг нужен?");
+            }
+
+              
             do {
                 price = prompt("Сколько будет стоить?");
             } while (!appData.isNumber(price));
             //appData.servis.push({id: i, name: name, price: price });
-    
+            // appData.servis[id] = i;
+            // appData.servis[name] = name;
             appData.servis[name] = +price; 
-            //appData.servis.id = i;
+            
             
            
         };       
@@ -82,7 +99,7 @@ const appData = {
     getTitle: function() {   
         appData.title = appData.title.trim()[0].toUpperCase() + appData.title.trim().slice(1).toLowerCase();
     },
-    getRollbackMessage: function(cost) {
+    getRollbackMessage: function(price) {
         if (price >= 30000) {
             return 'Делаем скидку 10%';
         } else if (price >= 15000 && price < 30000) {
@@ -94,6 +111,10 @@ const appData = {
         }            
     },
     logger: function () {
+        console.log(typeof appData.title);
+        console.log(typeof appData.servis);
+        console.log(typeof appData.screens);
+        console.log(typeof appData.screenPrice);
         console.log(appData.fullPrice);
         console.log(appData.servicePresentPrices);
         console.log(appData.screens);
