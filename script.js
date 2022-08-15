@@ -23,28 +23,26 @@ const appData = {
         return !isNaN(parseFloat(num)) && isFinite(num);
     },
     asking: function() {
-
         appData.title = prompt("Как называется ваш проект?");
+
         while (!isNaN(appData.title) || appData.title === "" || appData.title === null) {
             appData.title = prompt("Как называется ваш проект?");
         }
                           
         for (let i = 0; i < 2; i++) {
-
             let name = prompt("Какие типы экранов нужно разработать?");
             let price = 0;
             
             while (!isNaN(name) || name.trim() === "" || name === null) {
                 name = prompt("Какие типы экранов нужно разработать?");
-            };
-                       
+            }                       
 
             do {
                 price = prompt("Сколко будет стоить данная работа?");
             } while (!appData.isNumber(price));
 
             appData.screens.push({id: i, name: name, price: price });
-        };
+        }
         
         for (let i = 0; i < 2; i++) {
             let sum = appData.screenPrice;
@@ -52,34 +50,25 @@ const appData = {
             appData.screens.reduce(function(sum, price) {
                 sum + +price;
                 }, 0);
-        };
-        
+        }      
 
         for (let screen of appData.screens) {
             appData.screenPrice += +screen.price;            
         }
 
         for (let i = 0; i < 2; i++) {
-            //let id = i;
             let name = prompt("Какой дополнительный тип услуг нужен?");
             let price = 0;
 
             while (!isNaN(name) || name.trim() === "" || name === null) {
                 name = prompt("Какой дополнительный тип услуг нужен?");
             }
-
               
             do {
                 price = prompt("Сколько будет стоить?");
             } while (!appData.isNumber(price));
-            //appData.servis.push({id: i, name: name, price: price });
-            // appData.servis[id] = i;
-            // appData.servis[name] = name;
-            appData.servis[name] = +price; 
-            
-            
-           
-        };       
+            appData.servis[name] = +price;
+        }      
     
         appData.adaptive = confirm("Нужен ли адаптив на сайте?");
     },   
@@ -91,7 +80,6 @@ const appData = {
     },
     getFullPrice: function() {
         appData.fullPrice = +appData.screenPrice + appData.allServicePrices;
-        
     },
     getServicePercentPrices: function() {    
         appData.servicePresentPrices = Math.ceil(appData.fullPrice - (appData.fullPrice * (appData.rollback / 100)));
@@ -111,15 +99,10 @@ const appData = {
         }            
     },
     logger: function () {
-        console.log(typeof appData.title);
-        console.log(typeof appData.servis);
-        console.log(typeof appData.screens);
-        console.log(typeof appData.screenPrice);
         console.log(appData.fullPrice);
         console.log(appData.servicePresentPrices);
         console.log(appData.screens);
         console.log(appData.servis);
-
     }
 };
 
