@@ -1,5 +1,20 @@
 'use srtict';
 
+const title = document.getElementsByTagName('h1')[0];
+const button = document.getElementsByClassName('handler_btn');
+const plus = document.querySelector('.screen-btn');
+const percent = document.querySelectorAll('.other-items.percent');
+const number = document.querySelectorAll('.other-items.number');
+const inputType = document.querySelector('.rollback input[type=range]');
+const span = document.querySelector('.rollback span[class=range-value]');
+const totalInput1 = document.getElementsByClassName('total-input')[0];
+const totalInput2 = document.getElementsByClassName('total-input')[1];
+const totalInput3 = document.getElementsByClassName('total-input')[2];
+const totalInput4 = document.getElementsByClassName('total-input')[3];
+const totalInput5 = document.getElementsByClassName('total-input')[4];
+
+let screenHtml = document.querySelectorAll('.screen');
+
 const appData = {
     title: '',
     screens: [],
@@ -108,5 +123,16 @@ const appData = {
 
 appData.start();
 
-
-
+console.log(title);
+console.log(button);
+console.log(plus);
+console.log(percent);
+console.log(number);
+console.log(inputType);
+console.log(span);
+console.log(totalInput1);
+console.log(totalInput2);
+console.log(totalInput3);
+console.log(totalInput4);
+console.log(totalInput5);
+console.log(screenHtml);
