@@ -1,7 +1,8 @@
 'use srtict';
 
 const title = document.getElementsByTagName('h1')[0];
-const button = document.getElementsByClassName('handler_btn');
+const buttonStart = document.getElementsByClassName('handler_btn')[0];
+const buttonReset = document.getElementsByClassName('handler_btn')[1];
 const plus = document.querySelector('.screen-btn');
 const percent = document.querySelectorAll('.other-items.percent');
 const number = document.querySelectorAll('.other-items.number');
@@ -124,7 +125,8 @@ const appData = {
 appData.start();
 
 console.log(title);
-console.log(button);
+console.log(buttonStart);
+console.log(buttonReset);
 console.log(plus);
 console.log(percent);
 console.log(number);
