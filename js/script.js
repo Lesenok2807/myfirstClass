@@ -52,8 +52,7 @@ const appData = {
         appData.block();
         
         if (appData.block() === 0) {
-            startBtn.disablet = true;
-            
+            startBtn.disablet = true;            
             appData.blockBtn();
         } else {
             startBtn.disablet = false;
@@ -228,6 +227,26 @@ const appData = {
         this.getServicePercentPrices();
         totalCountRollback.value = 0;
     },
+    deleteBlockBtn: function() {
+        buttonPlus.disabled = false;
+        screens = document.querySelectorAll('.screen');
+        screens.forEach((screen) => {
+            const select = screen.querySelector('select');
+            const input = screen.querySelector('input');
+            select.disabled = false;
+            input.disabled = false;
+        });
+        otherItemsPercent.forEach((item) => {
+            const check = item.querySelector('input[type=checkbox]');
+            check.disabled = false;
+        });
+        otherItemsNumber.forEach((item) => {
+            const check = item.querySelector('input[type=checkbox]');
+            check.disabled = false;
+        });
+        checkCms.disabled = false;
+        inputRange.disabled = false;
+    }, 
     reset: function() {
         appData.deleteScreens();
         appData.deleteServis();
@@ -237,6 +256,7 @@ const appData = {
         startBtn.style.display = 'block';
         resetBtn.style.display = 'none';
         appData.start();
+        appData.deleteBlockBtn();
     }
 };
 
